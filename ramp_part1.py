@@ -29,8 +29,6 @@ class SimpleTaskManagementSystemImpl(SimpleTaskManagementSystem):
         self.ids[task_id] = new_description
         return True
 
-        
-
     def get_task(self, timestamp: int, task_id: str) -> str | None:
         """
         Retrieves the description of the task with the specified task_id. Returns the task description if it exists, or None otherwise.
@@ -41,5 +39,5 @@ class SimpleTaskManagementSystemImpl(SimpleTaskManagementSystem):
         """
         Deletes the task with the specified task_id. Returns True if the task was deleted successfully, or False if the task does not exist.
         """
-        return bool(self.ids.pop(task_id, None))
+        return task_id in self.ids and self.ids.pop(task_id) is not None
 
