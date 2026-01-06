@@ -1,3 +1,6 @@
+# Level 1: Implement basic CRUD operations for tasks, focusing on creation, updating, deletion, and retrieval.
+
+
 from simple_task_management_system import SimpleTaskManagementSystem
 
 
@@ -5,9 +8,7 @@ class SimpleTaskManagementSystemImpl(SimpleTaskManagementSystem):
 
     def __init__(self):
         self.ids = {}
-        pass
 
-    # TODO: implement interface methods here
     def create_task(self, timestamp: int, task_id: str, description: str) -> bool:
         """
         Creates a new task with the specified task_id and description. Returns True if the task was created successfully, or False if a task with the task_id already exists.
@@ -40,11 +41,5 @@ class SimpleTaskManagementSystemImpl(SimpleTaskManagementSystem):
         """
         Deletes the task with the specified task_id. Returns True if the task was deleted successfully, or False if the task does not exist.
         """
-        if task_id not in self.ids:
-            return False
+        return bool(self.ids.pop(task_id, None))
 
-        del self.ids[task_id]
-        return True
-
-
-    # Level 1: Implement basic CRUD operations for tasks, focusing on creation, updating, deletion, and retrieval.
