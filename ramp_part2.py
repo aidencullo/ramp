@@ -3,11 +3,13 @@
 
 
 from simple_task_management_system import SimpleTaskManagementSystem
+from datetime import datetime
 
 class Task:
     def __init__(self, desc: str, priority: int = 0):
         self.desc = desc
         self.priority = priority
+        self.creation_date = datetime.now()
 
     def set_priority(self, priority):
         self.priority = priority
@@ -72,4 +74,4 @@ class SimpleTaskManagementSystemImpl(SimpleTaskManagementSystem):
         """
         Returns a list of all task IDs sorted by multiple keys: first by priority in descending order (highest priority first), then by creation order in ascending order (earliest created first) for tasks with the same priority. Returns an empty list if no tasks exist.
         """
-        pass
+        return [f'task{i}' for i in sorted(self.ids.items(), key=lambda kv: (-kv[1].priority, kv[1].creation_date))]
